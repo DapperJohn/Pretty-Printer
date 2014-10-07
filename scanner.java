@@ -25,7 +25,7 @@ class Scanner {
 
 		char ch = (char) bit;
 		
-		// Skip whitspace and comments
+		// Skip whitespace and comments
 		if (ch == ' ' || ch == '\n' || ch =='\t') {
 			return getNextToken();
 		} 
