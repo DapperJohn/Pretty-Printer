@@ -6,6 +6,7 @@ class Set extends Special {
 
  
     // TODO: Add an appropriate constructor.
+	public Set(){}
 
     void print(Node t, int n, boolean p) {
     }

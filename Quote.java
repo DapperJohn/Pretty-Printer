@@ -6,6 +6,7 @@ class Quote extends Special {
 
  
     // TODO: Add an appropriate constructor.
+	public Quote(){}
 
     void print(Node t, int n, boolean p) {
     }

@@ -6,6 +6,7 @@ class Regular extends Special {
 
  
     // TODO: Add an appropriate constructor.
+	public Regular(){}
 
     void print(Node t, int n, boolean p) {
     }

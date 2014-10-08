@@ -6,6 +6,7 @@ class Let extends Special {
 
  
     // TODO: Add an appropriate constructor.
+	public Let(){}
 
     void print(Node t, int n, boolean p) {
     }

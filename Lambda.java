@@ -6,6 +6,7 @@ class Lambda extends Special {
 
  
     // TODO: Add an appropriate constructor.
+	public Lambda(){}
 
     void print(Node t, int n, boolean p) {
     }

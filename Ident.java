@@ -4,6 +4,8 @@ class Ident extends Node {
 
   public Ident(String n) { name = n; }
 
+  public boolean isSymbol() { return true; } 
+  
   public void print(int n) {
     for (int i = 0; i < n; i++)
       System.out.print(" ");
