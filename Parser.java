@@ -34,19 +34,33 @@
 // or an RPAREN) and attempts to continue parsing with the next token.
 
 class Parser {
-  private Scanner scanner;
+	private Scanner scanner;
+	private node NTrue;  //true node
+	Private node NFalse; //false node 
+  	public Parser(Scanner s) { scanner = s; }
+  
+ 	 public Node parseExp() {
+    	// TODO: write code for parsing an exp
+    		return null;
+   	}
+  
+ 	protected Node parseRest() {
+    	// TODO: write code for parsing rest
+    		return null;
+  	}
+ 
+  	public Node getNTrue() {
+		if (NTrue == null){
+	  		NTrue = new BooleanLit(true);
+		}
+		return NTrue;
+  	}
 
-  public Parser(Scanner s) { scanner = s; }
-  
-  public Node parseExp() {
-    // TODO: write code for parsing an exp
-    return null;
-  }
-  
-  protected Node parseRest() {
-    // TODO: write code for parsing rest
-    return null;
-  }
-  
+	public Node getNFalse() {
+		if (NFalse == null){
+	  		NFalse = new BooleanLit(false);
+		}
+		return NFalse;
+	}
+}; 
   // TODO: Add any additional methods you might need.
-};
