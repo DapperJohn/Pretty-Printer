@@ -66,18 +66,19 @@ class Parser {
 		throw new RuntimeException("Token type not recognized");
 	
 	
-	// create cons node where
-		// car = leaf node
-		// cdr = parseRest()
-	
-	return new Cons(leaf, parseRest());
+	return leaf;
 	
 	
   }
   
   protected Node parseRest() {
-    // TODO: write code for parsing rest
-    return null;
+    
+	// create cons node where
+		// car = leaf node
+		// cdr = parseRest()
+	
+	return new Cons(parseExp(), parseRest());
+	
   }
   
   // TODO: Add any additional methods you might need.
