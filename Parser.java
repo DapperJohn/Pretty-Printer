@@ -47,21 +47,21 @@ class Parser {
 	Node leaf;
 	int t = toke.getType();
 	if ( t == 0 )
-		leaf = new Ident();
+		leaf = new Ident(toke.getName());
 	else if ( t == 1 || t == 2 )
 		return parseRest();
 	else if ( t == 3 )
-		leaf = new Ident();
+		leaf = new Ident(toke.getName());
 	else if ( t == 4 )
-		leaf = new BoolLit();	
+		leaf = new BooleanLit(true);	
 	else if ( t == 5 )
-		leaf = new BoolLit();
+		leaf = new BooleanLit(false);
 	else if ( t == 6 )
-		leaf = new IntLit();
+		leaf = new IntLit(toke.getIntVal());
 	else if ( t == 7 )
-		leaf = new StrLit();	
+		leaf = new StrLit(toke.getStrVal());	
 	else if ( t == 8 )
-		leaf = new Ident();
+		leaf = new Ident(toke.getName());
 	else
 		throw new RuntimeException("Token type not recognized");
 	
