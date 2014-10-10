@@ -38,44 +38,11 @@ class Parser {
 
   public Parser(Scanner s) { scanner = s; }
   
-  // creates leaf
   public Node parseExp() {
     // TODO: write code for parsing an exp
-	
-	// get next token
-	Token toke = scanner.getNextToken();
-	
-	// create leaf node of appropriate type from token
-	Node leaf;
-	int t = toke.getType();
-	if ( t == 0 )
-		leaf = new Ident();
-	else if ( t == 1 || t == 2 )
-		return parseRest();
-	else if ( t == 3 )
-		leaf = new Ident();
-	else if ( t == 4 )
-		leaf = new BoolLit();	
-	else if ( t == 5 )
-		leaf = new BoolLit();
-	else if ( t == 6 )
-		leaf = new IntLit();
-	else if ( t == 7 )
-		leaf = new StrLit();	
-	else if ( t == 8 )
-		leaf = new Ident();
-	else
-		throw new RuntimeException("Token type not recognized");
-	
-	
-	// create cons node where
-		// car = leaf node
-		// cdr = parseRest()
-	
-	return new Cons(leaf, parseRest());
+    return null;
   }
   
-  // creates cons
   protected Node parseRest() {
     // TODO: write code for parsing rest
     return null;
