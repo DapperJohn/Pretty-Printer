@@ -4,6 +4,7 @@ mport java.io.*;
 import java.util.*;
 import java.lang.StringBuilder;
 
+@SuppressWarnings("deprecation")
 class Scanner {
 	private PushbackInputStream in;
 	private byte[] buf = new byte[1000];
@@ -38,7 +39,7 @@ class Scanner {
 				} catch (IOException e) {
 					System.err.println("We fail: " + e.getMessage());
 				  }
-				ch = (char) bite;
+				ch = (char) bit;
 			} while (!(ch == '\n'));
 				return getNextToken();
 		}
@@ -86,7 +87,7 @@ class Scanner {
 		  	} catch (IOException e) {
 				System.err.println("We fail: " + e.getMessage());
 		  	  }
-			ch = (char) bite;
+			ch = (char) bit;
 
 			while (!(ch == '"')) {
 				str.append(ch);
@@ -95,43 +96,25 @@ class Scanner {
 				} catch (IOException e) {
 					System.err.println("We fail: " + e.getMessage());
 				  }
-				ch = (char) bite;
+				ch = (char) bit;
 			}
 
 			return new StrToken(str.toString());
 		}
 
 		// Integer constants
-		else if (ch >= '0' && ch <= '9') {
-			int i = 0;
-			Stack<Integer> intStack = new Stack();
+	   	else if (ch >= '0' && ch <= '9') {
+			StringBuilder sb = new StringBuilder();
 
-			do {
-				i = ch - '0';
-				intStack.push(new Integer(i));
-				try {
-					bit = in.read();
-				} catch (IOException e) {
-					System.err.println("We fail: " + e.getMessage());
-				  }
-				ch = (char) bit;
-			} while ((ch >= '0' && ch <= '9'));
+            		try {
+                		in.unread((byte) ch);
+            		} catch (java.io.IOException e) {
+                		System.err.println("No character to unread!");
+           	 	}
 
-			int intValue = 0;
-			int j = 0;
-
-			while (!intStack.empty()) {
-				intValue += intStack.pop() * Math.pow(10, j++);
-			}
-
-			try {
-				in.unread(ch);
-			} catch (IOException e) {
-				System.err.println("We fail: " + e.getMessage());
-			  }
-
-			return new IntToken(intValue);
-		}
+            		return new IntToken(Integer.parseInt(sb.toString()));
+		}		
+	   	
 
 		// Identifiers
 		else if (ch >= 'A' && ch <= 'z') {
@@ -143,7 +126,7 @@ class Scanner {
 				} catch (IOException e) {
 					System.err.println("We fail: " + e.getMessage());
 				  }
-				ch = (char) bite;
+				ch = (char) bit;
 				str.append(ch);
 			} while (ch >= 'a' && ch <= 'z'); 
 			
