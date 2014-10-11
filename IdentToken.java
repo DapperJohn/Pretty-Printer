@@ -5,6 +5,13 @@ class IdentToken extends Token {
     super(TokenType.IDENT);
     name = s;
   }
+  
+  public void print(int n){
+	for (int i = 0; i < n; i++)
+      System.out.print(" ");
+	  
+	System.out.print(name);
+  }
 
   String getName() {
     return name;

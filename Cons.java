@@ -32,6 +32,8 @@ class Cons extends Node {
 				default: form = new Regular(); break;
 			}
 		}
+		else
+			form = new Regular();
 		
 	}
 

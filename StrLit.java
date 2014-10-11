@@ -10,6 +10,6 @@ class StrLit extends Node {
     for (int i = 0; i < n; i++)
       System.out.print(" ");
 
-    System.out.println("\"" + strVal + "\"");
+    System.out.print("\"" + strVal + "\"");
   }
 }
