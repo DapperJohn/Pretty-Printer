@@ -1,4 +1,4 @@
-// Written by: John Anny
+// Scanner written by: John Anny
 
 import java.io.*;
 import java.util.*;
@@ -115,7 +115,17 @@ class Scanner {
             		return new IntToken(Integer.parseInt(sb.toString()));
 		}		
 	   	
-
+		/*
+		/		TODO: 
+		/		John- I need you to change the name you're giving IdentTokens 
+		/				to something more descriptive than the literal character
+		/				that was read. Look at all of the classes that inherit
+		/				from Special (namely, Quote, Lambda, Begin, If, Let, Cond, Define, 
+		/				Set, and Regular) and please have Scanner create Idents with these
+		/				names instead.
+		/				For example- 
+		/
+		*/
 		// Identifiers
 		else if (ch >= 'A' && ch <= 'z') {
 			StringBuilder str = new StringBuilder();

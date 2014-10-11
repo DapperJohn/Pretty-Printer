@@ -33,6 +33,8 @@
 // parser discards the offending token (which probably was a DOT
 // or an RPAREN) and attempts to continue parsing with the next token.
 
+// Parser and parse tree written by: Alexandra Willis
+
 class Parser {
   private Scanner scanner;
 
@@ -42,7 +44,7 @@ class Parser {
   public Node parseExp() {
 	// get next token
 	Token toke = scanner.getNextToken();
-	parseExp(toke);
+	return parseExp(toke);
   }
   
   public Node parseExp(Token toke) {
@@ -94,7 +96,7 @@ class Parser {
 		// car = leaf node
 		// cdr = parseRest()
 	else
-		return new Cons(parseExp(token), parseRest());
+		return new Cons(parseExp(toke), parseRest());
 	
   }
 

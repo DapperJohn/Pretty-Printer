@@ -47,9 +47,9 @@ class Node {
     return null;
   }
   
-  public void setCar(Node a) {
-  }
+  public void setCar(Node a) {}
   
-  public void setCdr(Node d) {
-  }
+  public void setCdr(Node d) {}
+  
+  String getName() {return "";}
 }

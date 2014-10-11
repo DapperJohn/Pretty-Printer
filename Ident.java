@@ -3,6 +3,8 @@ class Ident extends Node {
   private String name;
 
   public Ident(String n) { name = n; }
+  
+  public String getName(){ return name; }
 
   public boolean isSymbol() { return true; } 
   
