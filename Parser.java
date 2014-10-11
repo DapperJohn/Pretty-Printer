@@ -38,20 +38,25 @@ class Parser {
 
   public Parser(Scanner s) { scanner = s; }
   
+  // made two forms of parseExp() so that parseRest() can call parseExp() on the token it just parsed
   public Node parseExp() {
-    
 	// get next token
 	Token toke = scanner.getNextToken();
+	parseExp(toke);
+  }
+  
+  public Node parseExp(Token toke) {
+    
+	// if the token is empty, return nothing
+	if(toke == null) return null;
 	
 	// create leaf node of appropriate type from token
 	Node leaf;
 	int t = toke.getType();
 	if ( t == 0 )
 		leaf = new Ident(toke.getName());
-	else if ( t == 1 || t == 2 )
+	else if ( t == 1 )
 		return parseRest();
-	else if ( t == 3 )
-		leaf = new Ident(toke.getName());
 	else if ( t == 4 )
 		leaf = new BooleanLit(true);	
 	else if ( t == 5 )
@@ -63,7 +68,7 @@ class Parser {
 	else if ( t == 8 )
 		leaf = new Ident(toke.getName());
 	else
-		throw new RuntimeException("Token type not recognized");
+		throw new RuntimeException("Token type not recognized, or is rparen (2) or dot (3).");
 	
 	
 	return leaf;
@@ -72,14 +77,25 @@ class Parser {
   }
   
   protected Node parseRest() {
-    
+  
+	// get next token
+	Token toke = scanner.getNextToken();
+	int t = toke.getType();
+	
+	// if token is a dot, create cons node where
+		// car = parseExp(current token)
+		// cdr = parseRest()
+	if( t == 3 )
+		return new Cons(parseExp(), parseRest());
+	// if token is an rparen, return null
+    else if( t == 2 )
+		return null;
 	// create cons node where
 		// car = leaf node
 		// cdr = parseRest()
-	
-	return new Cons(parseExp(), parseRest());
+	else
+		return new Cons(parseExp(token), parseRest());
 	
   }
-  
-  // TODO: Add any additional methods you might need.
+
 };
