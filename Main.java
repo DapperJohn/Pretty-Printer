@@ -46,7 +46,7 @@ public class Main {
 	    }
 	}
 	
-	/*
+	
 	// Create parser
 	Parser parser = new Parser(scanner);
 	Node root;
@@ -58,7 +58,7 @@ public class Main {
 	    root = parser.parseExp();
 	}
 	System.exit(0);
-	*/
+	
 	
 	
     }

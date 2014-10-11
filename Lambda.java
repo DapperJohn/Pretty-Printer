@@ -9,5 +9,9 @@ class Lambda extends Special {
 	public Lambda(){}
 
     void print(Node t, int n, boolean p) {
+		for (int i = 0; i < n; i++)
+			System.out.print(" ");
+			
+		System.out.print("(lambda");
     }
 }

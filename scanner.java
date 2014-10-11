@@ -27,6 +27,7 @@ class Scanner {
 			return null;
 
 		char ch = (char) bit;
+		System.out.println(ch);
 		
 		// Skip whitespace and comments
 		if (ch == ' ' || ch == '\n' || ch =='\t') {
