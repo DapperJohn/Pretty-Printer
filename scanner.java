@@ -103,19 +103,35 @@ class Scanner {
 			return new StrToken(str.toString());
 		}
 
+	   
+
 		// Integer constants
-	   	else if (ch >= '0' && ch <= '9') {
-			StringBuilder sb = new StringBuilder();
-
-            		try {
-                		in.unread((byte) ch);
-            		} catch (java.io.IOException e) {
-                		System.err.println("No character to unread!");
-           	 	}
-
-            		return new IntToken(Integer.parseInt(sb.toString()));
-		}		
-	   	
+   		else if (ch >= '0' && ch <= '9') {
+      			int i = ch - '0';
+      		// TODO: scan the number and convert it to an integer
+      			try {
+                        	bit = in.read();
+                    	} catch (IOException e) {
+                      		System.err.println("We fail: " + e.getMessage());
+                    	}
+      		while((char)bit >= '0' && (char)bit <= '9'){
+                	i = i*10 + (char)bit - '0';
+               		try {
+                        	bit = in.read();
+                    	} catch (IOException e) {
+                      		System.err.println("We fail: " + e.getMessage());
+                    	}	
+      		}
+      		// put the character after the integer back into the input
+      		// in->putback(ch);
+      		try {
+                        in.unread(bit);
+                    } catch (IOException e) {
+                      	System.err.println("We fail: " + e.getMessage());
+                    }
+      		return new IntToken(i);
+    		}
+	
 		/*
 		/		TODO: 
 		/		John- I need you to change the name you're giving IdentTokens 
