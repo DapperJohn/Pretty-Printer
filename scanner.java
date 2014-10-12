@@ -1,4 +1,5 @@
 // Scanner.java -- the implementation of class Scanner
+// John anny & Alexandra Willis
 
 import java.io.*;
 import java.lang.Math;
