@@ -67,12 +67,11 @@ class Scanner {
 	  // counter to keep track of length of buf
 	  int numChars = 0;
 	  
-	  // read first char of string
 	  try {
-			ch = (char) in.read();
+		ch = (char) in.read();
       } catch (IOException e) {
-			System.err.println("We fail: " + e.getMessage());
-	  }
+		System.err.println("We fail: " + e.getMessage());
+      }
 	  
       // while not reached end of string
 	  while(ch != '"'){
@@ -87,7 +86,10 @@ class Scanner {
 		
 	  }
 	  
-	  return new StrToken(buf.toString());
+	  String finalString = "";
+	  for(int q=0; q<numChars; q++)
+		finalString += (char) buf[q];
+	  return new StrToken(finalString);
     }
 
     // Integer constants
@@ -139,16 +141,12 @@ class Scanner {
     else if ( ch >= 'A' && ch <= 'Z' || (ch >= 'a') && (ch <= 'z')  || idents.contains(ch+"") ) {
       
 	  int count = 0;
-	  try {
-			ch = (char) in.read();
-		} catch (IOException e) {
-			System.err.println("We fail: " + e.getMessage());
-		}
-	  buf[count] = (byte) ch; 
+
 	
 	  while( ch >= 'A' && ch <= 'Z' || (ch >= 'a') && (ch <= 'z') || idents.contains(ch+"") ){
 		
 		buf[count] = (byte) ch;
+		count++;
 		
 		try {
 			ch = (char) in.read();
@@ -159,9 +157,16 @@ class Scanner {
 	  
 	  }
 	  
-      // put the character after the identifier back into the input
+      // TODO: put the character after the identifier back into the input
       // in->putback(ch);
-      return new IdentToken(buf.toString());
+	  
+	  // creates an identToken with name depending on ident type
+	  String identString = "";
+	  for(int q=0; q<count; q++)
+		identString += (char) buf[q];
+	  
+	  
+      return new IdentToken(identString);
     }
 
     // Illegal character
