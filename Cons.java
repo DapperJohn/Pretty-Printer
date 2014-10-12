@@ -44,11 +44,24 @@ class Cons extends Node {
     }
 
     void print(int n) {
-		form.print(this, n, false);
+		parseList().print(this, n, false);
     }
 
     void print(int n, boolean p) {
-		form.print(this, n, p);
+		parseList().print(this, n, p);
+    }
+    
+    public void printQuote(int n, boolean p) {
+      parseList().printQuote(this, n, p);
+    }
+    
+    @Override
+    public Node getCar() {
+      return car;
     }
 
+    @Override
+    public Node getCdr() {
+      return cdr;
+    }
 }
