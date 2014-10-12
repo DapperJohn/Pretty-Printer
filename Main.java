@@ -28,7 +28,6 @@ public class Main {
 	// if commandline option -d is provided, debug the scanner
 	if (argv.length == 1 && argv[0].equals("-d")) {
 	    // debug scanner
-		System.out.println("lol");
 	    Token tok = scanner.getNextToken();
 	    while (tok != null) {
 		int tt = tok.getType();
